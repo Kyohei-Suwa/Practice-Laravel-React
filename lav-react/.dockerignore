@@ -1,0 +1,5 @@
+node_modules/
+vendor/
+
+# For Mac OSX
+postgres-data/data/.DS_Store
