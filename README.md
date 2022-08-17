@@ -26,9 +26,13 @@ docker-compose up -d
 docker-compose exec php-apache /bin/bash
 npm run build
 ```
+
+Access localhost:8080 on Your Brouser
+
 ## Tags
+
 vanila_laravel_react:laravel and react(+typescrit) settings
 
 EsLint_AND_Devcontainer:devcontainer setting and eslint in container (javascript ruled by airbnb)
 
-Access localhost:8080 on Your Brouser
+
