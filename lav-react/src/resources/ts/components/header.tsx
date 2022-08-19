@@ -4,11 +4,13 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Header:React.FC = () => {
+// TypeScript TypeDefinition on FanctionalComponents
+const Header:React.FC<{isOpen:boolean, setIsOpen:(isOpen:boolean) => void}> = (props) => {
+  const { isOpen, setIsOpen } = props;
   // React Hooks Sample
   const [iconButtonToggle, setIconButtonToggle] = React.useState(false);
   const handleClick = () => {
-    setIconButtonToggle(!iconButtonToggle);
+    setIsOpen(!isOpen);
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
