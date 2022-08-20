@@ -22,7 +22,7 @@ const Header:React.FC<{isOpen:boolean, setIsOpen:(isOpen:boolean) => void}> = (p
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {iconButtonToggle ? 'Bye!' : 'Hello!'}
+            {isOpen ? '                        Drawer is Opened!' : '                        Drawer is Closed!'}
           </Typography>
         </Toolbar>
       </AppBar>
