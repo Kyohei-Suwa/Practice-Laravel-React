@@ -24,7 +24,8 @@ cd lav-react
 docker-compose up -d
 (wait for build container)
 docker-compose exec php-apache /bin/bash
-npm run build
+npm run dev
+(vite can hot deploy)
 ```
 
 Access localhost:8080 on Your Brouser
