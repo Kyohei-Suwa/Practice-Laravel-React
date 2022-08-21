@@ -1,20 +1,27 @@
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import {
-  Box, Button, colors, Divider, List, ListItem, ListItemButton, ListItemText,
+  Box, Divider, List, ListItem, ListItemButton, ListItemText,
 } from '@mui/material';
+import { To } from 'react-router-dom';
 import { IMenu } from '../constants/menus';
 
 interface IMenuProps {
   menuList:IMenu[],
   isOpen:boolean,
   setIsOpen:(isOpen:boolean)=>void
+  setTo:(to:To) => void
 }
 
 const MenuDrawer:React.FC<{menuProp:IMenuProps}> = (props) => {
   const { menuProp } = props;
-  const { menuList, isOpen, setIsOpen } = menuProp;
+  const {
+    menuList, isOpen, setIsOpen, setTo,
+  } = menuProp;
 
+  const handleClick = (url:string) => {
+    setTo(url);
+  };
   const list = (
     <Box
       component="span"
@@ -26,16 +33,35 @@ const MenuDrawer:React.FC<{menuProp:IMenuProps}> = (props) => {
           <>
             {/** React.Fragment for Multi elements */}
             <ListItem key={menuList[index].name}>
-              <ListItemButton>
-                <ListItemText primary={menuList[index].name} />
+              <ListItemButton
+                key={`btn--${menuList[index].name}`}
+                onClick={() => {
+                  handleClick(menuList[index].url);
+                  setIsOpen(false);
+                }}
+              >
+                <ListItemText
+                  key={`txt--${menuList[index].name}`}
+                  primary={menuList[index].name}
+
+                />
               </ListItemButton>
             </ListItem>
             {menuList[index].childs !== undefined
             && menuList[index].childs?.map((child, cIndex) => (
               <ListItem key={child.name}>
-                <ListItemButton>
+                <ListItemButton
+                  key={`btn--${child.name}`}
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                >
                   {/** String Concat -- Template Literal */}
-                  <ListItemText primary={`---    ${child.name}`} />
+                  <ListItemText
+                    key={`txt--${child.name}`}
+                    primary={`---    ${child.name}`}
+
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
