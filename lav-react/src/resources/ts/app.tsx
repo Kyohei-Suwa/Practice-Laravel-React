@@ -6,6 +6,7 @@ import Header from './components/header';
 import MenuDrawer from './components/drawer';
 import Menus from './constants/menus';
 import { locationMap } from './constants/menus';
+import ContentBreadCrumbs from './components/contentBreadCrumbs';
 import TopPage from './routes/topPage';
 import PrivatePage from './routes/tempPage';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
   return (
     <div>
       <Header displayName={displayName} isOpen={isOpenDrawer} setIsOpen={setOpenDrawer} />
+      <ContentBreadCrumbs setTo={navigate} />
       <Routes>
         <Route path={Menus[0].url} element={<TopPage />} />
         <Route path={Menus[0].url} element={<TopPage />} />
