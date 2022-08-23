@@ -4,15 +4,20 @@ import {
 } from 'react-router-dom';
 import Header from './components/header';
 import MenuDrawer from './components/drawer';
-import Menus from './constants/menus';
-import { locationMap } from './constants/menus';
+import Menus, { locationMap } from './constants/menus';
 import ContentBreadCrumbs from './components/contentBreadCrumbs';
 import TopPage from './routes/topPage';
 import PrivatePage from './routes/tempPage';
+import InformationSnackBar from './components/informationBar';
 
 const App: React.FC = () => {
   const [isOpenDrawer, setOpenDrawer] = React.useState(false);
   const [displayName, setDisplayName] = React.useState('TOP');
+  const [messageState, setMessageState] = React.useState<{message:string, open:boolean}>({
+    message: '',
+    open: false,
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,11 +26,17 @@ const App: React.FC = () => {
     const displayed = locationMap.find((menu) => menu[1] === location.pathname);
     if (displayed !== undefined) {
       setDisplayName(displayed[0]);
+      setMessageState({ message: displayName, open: true });
     }
   }, [location]); // 2nd Argument needs for update only when location change
 
   return (
     <div>
+      <InformationSnackBar
+        message={messageState.message}
+        open={messageState.open}
+        setMessageState={setMessageState}
+      />
       <Header displayName={displayName} isOpen={isOpenDrawer} setIsOpen={setOpenDrawer} />
       <ContentBreadCrumbs setTo={navigate} />
       <Routes>
