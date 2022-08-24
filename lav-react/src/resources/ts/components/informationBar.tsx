@@ -5,7 +5,15 @@ import Snackbar from '@mui/material/Snackbar';
 const InformationSnackBar:React.FC<{message:string, open:boolean, setMessageState:({ message: string, open: boolean })=> void}> = (props) => {
   const { message, open, setMessageState } = props;
 
+  /**
+   * @type {string}
+   * SnackBar Display Direction Vertical
+   */
   const vertical = 'top';
+  /**
+   * @type {string}
+   * SnackBar Display Direction Horizontal
+   */
   const horizontal = 'center';
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
