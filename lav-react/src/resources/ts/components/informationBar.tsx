@@ -1,8 +1,13 @@
 import * as React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 
+interface SnackBarProps {
+  message: string;
+  open: boolean;
+  setState: ({ message, open }:{message:string, open:boolean}) => void;
+}
 // TODO messageState is redundancy...
-const InformationSnackBar:React.FC<{message:string, open:boolean, setMessageState:({ message: string, open: boolean })=> void}> = (props) => {
+const InformationSnackBar:React.FC<{message:string, open:boolean, setMessageState:({ message, open }:{message:string, opne:boolean})=> void}> = (props) => {
   const { message, open, setMessageState } = props;
 
   /**
