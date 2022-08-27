@@ -7,8 +7,9 @@ interface SnackBarProps {
   setState: ({ message, open }:{message:string, open:boolean}) => void;
 }
 // TODO messageState is redundancy...
-const InformationSnackBar:React.FC<{message:string, open:boolean, setMessageState:({ message, open }:{message:string, opne:boolean})=> void}> = (props) => {
-  const { message, open, setMessageState } = props;
+const InformationSnackBar:React.FC<{sprops:SnackBarProps}> = (props) => {
+  const { sprops } = props;
+  const { message, open, setState } = sprops;
 
   /**
    * @type {string}
@@ -25,7 +26,7 @@ const InformationSnackBar:React.FC<{message:string, open:boolean, setMessageStat
     if (reason === 'clickaway') {
       return;
     }
-    setMessageState({ message, open: false });
+    setState({ message, open: false });
   };
 
   return (

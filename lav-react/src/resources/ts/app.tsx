@@ -33,9 +33,11 @@ const App: React.FC = () => {
   return (
     <div>
       <InformationSnackBar
-        message={messageState.message}
-        open={messageState.open}
-        setMessageState={setMessageState}
+        sprops={{
+          message: messageState.message,
+          open: messageState.open,
+          setState: setMessageState,
+        }}
       />
       <Header displayName={displayName} isOpen={isOpenDrawer} setIsOpen={setOpenDrawer} />
       <ContentBreadCrumbs setTo={navigate} />
